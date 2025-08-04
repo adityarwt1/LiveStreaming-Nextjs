@@ -1,7 +1,8 @@
 // components/LiveStream.js
 "use client"
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, Ref } from "react";
 import { io } from "socket.io-client";
+/// defining the inside schema of the ssocket id 
 
 const LiveStream = () => {
   const [isStreaming, setIsStreaming] = useState(false);
@@ -16,7 +17,7 @@ const LiveStream = () => {
 
   useEffect(() => {
     // Initialize socket connection
-    socketRef.current = io("http://localhost:3001");
+    socketRef.current  = io("http://localhost:3001");
 
     socketRef.current.on("viewerCount", (count) => {
       setViewers(count);
