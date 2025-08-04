@@ -1,3 +1,4 @@
+import { connectdb } from "@/lib/mongodb";
 import Stream from "@/models/LiveStream";
 import { NextRequest, NextResponse } from "next/server";
 
@@ -9,7 +10,7 @@ export async function POST(req: NextRequest) {
         if(!streamKey){
             return NextResponse.json({error: "Stream key required"},{status: 400})
         }
-
+        await connectdb()
         const stream = await Stream.findOneAndUpdate(
           { streamKey, isLive: true },
           {
