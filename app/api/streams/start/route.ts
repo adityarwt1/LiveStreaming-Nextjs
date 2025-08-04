@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
 
          await stream.save();
 
-         NextResponse.json({
+       return  NextResponse.json({
            success: true,
            streamId: stream._id,
            message: "Stream started successfully",
